@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function loadXMLDoc(meth,url)
+{
+var xmlhttp;
+if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+	xmlhttp=new XMLHttpRequest();
+} else {// code for IE6, IE5
+  	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange=function() {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+    document.getElementById("output").innerHTML=xmlhttp.responseText;
+  }
+}
+xmlhttp.open(meth, url ,true);
+xmlhttp.send();
+}
+
+function get() {
+	loadXMLDoc("GET","api.php?method=getAllUsers");
+}
+
+function insert() {
+	var iusername = document.getElementById("iusername");
+	if (iusername.value != null || iusername.value != '') {
+		loadXMLDoc("POST","api.php?method=insertUser&apitoken=test_token&name=" + iusername.value);
+	}	
+}
+
+function can() {
+	var dusername = document.getElementById("dusername");
+	if (dusername.value != null || dusername.value != '') {
+		loadXMLDoc("POST","api.php?method=deleteUser&apitoken=test_token&name=" + dusername.value);
+	}	
+}
+</script>
+</head>
+<body>
+
+<table>
+	<tr>
+		<td>																					 </td><td><button type="button" onclick="get()">get users</button></td>
+	</tr>
+	<tr>
+		<td><input type="text" placeholder="name here to insert" id="iusername" name="iusername"></td><td><button type="button" onclick="insert()">insert user</button></td>
+	</tr>
+	<tr>
+		<td><input type="text" placeholder="name here to delete" id="dusername" name="dusername"></td><td><button type="button" onclick="can()">delete user</button></td>
+	</tr>
+</table>
+
+<br><hr><br>
+
+
+<div id="output">output section</div>
+
+
+
+</body>
+</html>
