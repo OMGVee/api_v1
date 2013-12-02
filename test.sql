@@ -7,6 +7,8 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
+CREATE DATABASE IF NOT EXISTS `test`;
+USE `test`;
 
 --
 -- Database: `test`
@@ -18,7 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Creation: Aug 25, 2013 at 04:36 PM
 --
-
 DROP TABLE IF EXISTS `tokens`;
 CREATE TABLE IF NOT EXISTS `tokens` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
