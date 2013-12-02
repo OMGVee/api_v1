@@ -26,11 +26,11 @@ function getAllUsers() {
 }
 
 function insertUser($token, $username) {
-	$user_sql1 = "insert into user (id,name) values ('','$username');";
+	$user_sql1 = "insert into user set name='$username';";
 	$user_sql2 = "update tokens set used=used+1 where token='$token';";
 	if (valid_token($token)) {
-		$result1 = mysql_query($user_sql1);
-		$result2 = mysql_query($user_sql2);
+		$result1 = mysql_query($user_sql1); if (!$result1) { echo(mysql_error());  }
+		$result2 = mysql_query($user_sql2); if (!$result2) { echo(mysql_error());  }
 		echo "<br>inserted user: $username<br>";
 	} else {
 		echo "operation not allowed - invalid token<br>";

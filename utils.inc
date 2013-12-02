@@ -1,6 +1,6 @@
 <?php
 //connect db
-mysql_connect("localhost","1","") or die(mysql_error());
+mysql_connect("localhost","<whatever_user>","<whatever_password>") or die(mysql_error());
 mysql_select_db("test") or die(mysql_error());
 //who cares about closing fucking db connections these days, really =)
 //this is just a short demo of a simple API, not production shit, so sue me
